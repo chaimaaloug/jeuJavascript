@@ -22,6 +22,7 @@
         <div id="infoCombat">
             <div id="infoPerso">
                 <h2 id="nom"></h2>
+                <p>Niveau : <span id="niveau"></span></p>
                 <p>Vie : <span id="vie"></span></p>
                 <p>Attaque : <span id="attaque"></span></p>
                 <p>Defense : <span id="defense"></span></p>
@@ -35,8 +36,10 @@
                 <p>Defense : <span id="defenseMonstre"></span></p>
             </div>
         </div>
-        <button id="btnAttaque" onclick="attaque()">Attaque</button>
-        <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+        <div id="actionJoueur">
+            <button id="btnAttaque" onclick="attaque()">Attaque</button>
+            <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+        </div>
     </div>
 
 

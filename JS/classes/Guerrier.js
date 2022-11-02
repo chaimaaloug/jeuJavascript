@@ -2,8 +2,8 @@
 
 // export 
 class Guerrier extends Hero {
-    constructor(nom, experience, vie = 150, attaque = 40, defense = 20){
-        super(nom, vie, attaque, defense, experience);
+    constructor(nom, experience, vie = 150, attaque = 40, defense = 20, niveau = 1){
+        super(nom, vie, attaque, defense, experience, niveau);
     }
 
     // avantage d'être un guerrier : la force !
