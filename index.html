@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Combat</title>
+</head>
+<body>
+    <div id="starter">
+        <label for="InputName">Choisissez votre pseudo :</label>
+        <input type="text" id="InputName">
+        <button id="BtnMagicien" onclick="choixPerso('Magicien')">Magicien</button>
+        <button id="BtnGuerrier" onclick="choixPerso('Guerrier')">Guerrier</button>
+    </div>
+    <div id="game">
+        <h1>Jeu</h1>
+        <div id="infoCombat">
+            <div id="infoPerso">
+                <h2 id="nom"></h2>
+                <p>Vie : <span id="vie"></span></p>
+                <p>Attaque : <span id="attaque"></span></p>
+                <p>Defense : <span id="defense"></span></p>
+                <p>Experience : <span id="experience"></span></p>
+                <p id="manaP">Mana : <span id="mana"></span></p>
+            </div>
+            <div id="infoMonstre">
+                <h2 id="nomMonstre"></h2>
+                <p>Vie : <span id="vieMonstre"></span></p>
+                <p>Attaque : <span id="attaqueMonstre"></span></p>
+                <p>Defense : <span id="defenseMonstre"></span></p>
+            </div>
+        </div>
+        <button id="btnAttaque" onclick="attaque()">Attaque</button>
+        <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+    </div>
+
+
+<!-- SCRIPTS -->
+    <!-- librairies -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    
+    <!-- classes -->
+    <script src="js/classes/Personnage.js"></script>
+
+    <script src="js/classes/Hero.js"></script>
+    <script src="js/classes/Guerrier.js"></script>
+    <script src="js/classes/Magicien.js"></script>
+
+    <script src="js/classes/Monstre.js"></script>
+    <script src="js/classes/Gobelin.js"></script>
+
+    <!-- script général -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>

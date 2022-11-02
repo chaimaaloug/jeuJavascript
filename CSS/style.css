@@ -1,0 +1,13 @@
+body {
+    width : 100%;
+    height: 100vh;
+    margin : 0;
+    font-family: 'Poor Story', cursive;
+    font-size: 20px;
+    text-align: center;
+    background: url(../assets/brown-wood-texture.jpg) no-repeat 50% 50% / cover;
+    color: #fff;
+}
+#game {display: none;}
+#infoCombat {display: flex; justify-content: space-evenly;}
+#btnBouleDeFeu {display: none;}
