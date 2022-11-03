@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <link href="lib/rpgui.css" rel="stylesheet" type="text/css" >
     <link rel="stylesheet" href="css/style.css">
     <title>Combat</title>
 </head>
@@ -19,20 +20,22 @@
     </div>
     <div id="game">
         <h1>Jeu</h1>
-        <div id="infoCombat">
-            <div id="infoJoueur">
+        <div id="infoCombat" class="rpgui-content">
+            <div id="infoJoueur" class="rpgui-container framed">
                 <h2 id="nom"></h2>
-                <img src="" alt="" id="imgJoueur">
+                <img src="" alt="" id="imgJoueur" class="imgPerso">
                 <p>Niveau : <span id="niveau"></span></p>
                 <p>Vie : <span id="vie"></span></p>
+                <div class="rpgui-progress red" id="barreVieJoueur"></div>
                 <p>Attaque : <span id="attaque"></span></p>
                 <p>Defense : <span id="defense"></span></p>
                 <p>Experience : <span id="experience"></span></p>
                 <p id="manaP">Mana : <span id="mana"></span></p>
+                <div class="rpgui-progress blue" id="barreManaJoueur"></div>
             </div>
-            <div id="infoMonstre">
+            <div id="infoMonstre" class="rpgui-container framed">
                 <h2 id="nomMonstre"></h2>
-                <img src="" alt="" id="imgMonstre">
+                <img src="" alt="" id="imgMonstre" class="imgPerso">
                 <p>Vie : <span id="vieMonstre"></span></p>
                 <p>Attaque : <span id="attaqueMonstre"></span></p>
                 <p>Defense : <span id="defenseMonstre"></span></p>
@@ -47,6 +50,7 @@
 
 <!-- SCRIPTS -->
     <!-- librairies -->
+    <script src="lib/rpgui.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     
     <!-- classes -->
