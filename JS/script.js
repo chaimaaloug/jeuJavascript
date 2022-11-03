@@ -19,24 +19,24 @@ const enderman = new Monstre("Enderman", 100, 40, 20, 50); // c'est un mini boss
 // console.log("Vie de " + gobelinGuluk.nom + ": " + gobelinGuluk.vie);
 // console.log("Il te reste " + valentin.mana + " points de mana");
 
-var perso;
-var pseudo;
+let joueur;
+let pseudo;
 
-var monstre;
+let monstre;
 
-var playerTurn = true;
+let playerTurn = true;
 
 // initialisation 
-function choixPerso(type) {
+function choixJoueur(type) {
     console.log(type);
     pseudo = document.getElementById("InputName").value;
 
     if (pseudo != ""){
 
         if(type === "Magicien"){
-            perso = new Magicien(pseudo, 0);
+            joueur = new Magicien(pseudo, 0);
         }else if(type === "Guerrier"){
-            perso = new Guerrier(pseudo, 0);
+            joueur = new Guerrier(pseudo, 0);
         }
         
         console.log(pseudo);
@@ -52,18 +52,18 @@ function choixPerso(type) {
     }
 }
 
-function affichageInfoPerso(){
-    document.getElementById('nom').innerHTML = perso.nom;
-    document.getElementById('vie').innerHTML = perso.vie + "/" + perso.vieMax;
-    document.getElementById('attaque').innerHTML = perso.attaque;
-    document.getElementById('defense').innerHTML = perso.defense;
-    document.getElementById('experience').innerHTML = perso.experience;
-    document.getElementById('niveau').innerHTML = perso.niveau;
+function affichageInfoJoueur(){
+    document.getElementById('nom').innerHTML = joueur.nom;
+    document.getElementById('vie').innerHTML = joueur.vie + "/" + joueur.vieMax;
+    document.getElementById('attaque').innerHTML = joueur.attaque;
+    document.getElementById('defense').innerHTML = joueur.defense;
+    document.getElementById('experience').innerHTML = joueur.experience;
+    document.getElementById('niveau').innerHTML = joueur.niveau;
 
     // test magicien
     if(isMagicien()){
         document.getElementById('manaP').style = 'display: block;';
-        document.getElementById('mana').innerHTML = perso.mana + "/" + perso.manaMax;;
+        document.getElementById('mana').innerHTML = joueur.mana + "/" + joueur.manaMax;;
         document.getElementById('btnBouleDeFeu').style = 'display: inline-block';
     } 
     // test guerrier
@@ -99,34 +99,34 @@ function genererMonstre(){
 }
 
 function attaque(){
-    monstre.vie -= perso.attaque;
+    monstre.vie -= joueur.attaque;
     refreshInfo();
 }
 
 function verifMort(){
     if(monstre.vie <= 0){
         monstre.vie = 0;
-        perso.experience += monstre.experienceDonnee;
+        joueur.experience += monstre.experienceDonnee;
         alert("Vous avez tué " + monstre.nom);
         checkLevelUp();
         genererMonstre();
     }
-    if(perso.vie <= 0){
-        perso.vie = 0;
+    if(joueur.vie <= 0){
+        joueur.vie = 0;
         alert("Vous êtes mort");
         location.reload();
     }
 }
 
 function bouleDeFeu(){
-    perso.bouleDeFeu(monstre);
+    joueur.bouleDeFeu(monstre);
     refreshInfo();   
 }
 
 function refreshInfo(){
     affichageInfoMonstre();
     verifMort();
-    affichageInfoPerso();
+    affichageInfoJoueur();
     gererTour();
 }
 
@@ -149,8 +149,8 @@ function affichageActionJoueur(){
 }
 
 function attaqueDeAdversaire(){
-    const degatMonstre = monstre.attaque - perso.defense
-    perso.vie -= degatMonstre;
+    const degatMonstre = monstre.attaque - joueur.defense
+    joueur.vie -= degatMonstre;
     alert(`${monstre.nom} attaque, vous perdez ${degatMonstre} de vie`);
     playerTurn = true;
     refreshInfo();
@@ -158,22 +158,29 @@ function attaqueDeAdversaire(){
 
 function checkLevelUp() {
 
-    if (perso.experience >= 50){
-        perso.niveau += 1;
-        perso.experience -=50;
-        perso.vieMax += 25;
-        perso.vie = perso.vieMax;
-        perso.attaque += 10;
+    if (joueur.experience >= 50){
+        joueur.niveau += 1;
+        joueur.experience -=50;
+        joueur.vieMax += 25;
+        joueur.vie = joueur.vieMax;
+        joueur.attaque += 10;
         if (isMagicien()){
-            perso.manaMax += 20;
-            perso.mana = perso.manaMax;
+            joueur.manaMax += 20;
+            joueur.mana = joueur.manaMax;
         }
         alert("Vous êtes monté en niveau")
     }
-    // augmenter bouleDeFeu (lié attaque ?)
-    // monstre + forts
+    // augmenter bouleDeFeu (lier attaque ?)
+    // monstre + forts ?
 }
 
 function isMagicien(){
-    return perso.mana != undefined;
+    return joueur.mana != undefined;
 }
+
+// document.getElementById("imgJoueur").setAttribute("src", "../assets/firemage.webp")
+// document.getElementById("imgJoueur").setAttribute("width", "250px")
+
+let imgJoueur = $("#imgJoueur").attr("src", "../assets/firemage.png").attr("width", "250px").attr("height", "auto").attr("alt", "Mage de feu");
+// let imgMonstre = $("#imgMonstre").attr("src", "../assets/" + monstre + ".png").attr("width", "250px").attr("height", "auto").attr("alt", "Gobelin");
+

@@ -13,7 +13,7 @@ class Magicien extends Hero {
         
         if (this.mana >= 20) {
             this.mana -= 20;
-            cible.vie -= (perso.attaque*2);
+            cible.vie -= (joueur.attaque*2);
             console.log(this.nom + " attaque " + cible.nom + " avec une boule de feu");
         }else{
             alert("pas de mana");
