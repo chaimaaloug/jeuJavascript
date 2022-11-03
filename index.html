@@ -14,14 +14,16 @@
     <div id="starter">
         <label for="InputName">Choisissez votre pseudo :</label>
         <input type="text" id="InputName">
-        <button id="BtnMagicien" onclick="choixPerso('Magicien')">Magicien</button>
-        <button id="BtnGuerrier" onclick="choixPerso('Guerrier')">Guerrier</button>
+        <button id="BtnMagicien" onclick="choixJoueur('Magicien')">Magicien</button>
+        <button id="BtnGuerrier" onclick="choixJoueur('Guerrier')">Guerrier</button>
     </div>
     <div id="game">
         <h1>Jeu</h1>
         <div id="infoCombat">
-            <div id="infoPerso">
+            <div id="infoJoueur">
                 <h2 id="nom"></h2>
+                <img src="" alt="" id="imgJoueur">
+                <p>Niveau : <span id="niveau"></span></p>
                 <p>Vie : <span id="vie"></span></p>
                 <p>Attaque : <span id="attaque"></span></p>
                 <p>Defense : <span id="defense"></span></p>
@@ -30,13 +32,16 @@
             </div>
             <div id="infoMonstre">
                 <h2 id="nomMonstre"></h2>
+                <img src="" alt="" id="imgMonstre">
                 <p>Vie : <span id="vieMonstre"></span></p>
                 <p>Attaque : <span id="attaqueMonstre"></span></p>
                 <p>Defense : <span id="defenseMonstre"></span></p>
             </div>
         </div>
-        <button id="btnAttaque" onclick="attaque()">Attaque</button>
-        <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+        <div id="actionJoueur">
+            <button id="btnAttaque" onclick="attaque()">Attaque</button>
+            <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+        </div>
     </div>
 
 

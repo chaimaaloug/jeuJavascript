@@ -2,8 +2,8 @@
 
 // export 
 class Hero extends Personnage {
-    constructor(nom, vie, attaque, defense, experience){
-        super(nom, vie, attaque, defense);
+    constructor(nom, vie, attaque, defense, experience, niveau){
+        super(nom, vie, attaque, defense, niveau);
 
         this.experience = experience;
     }
