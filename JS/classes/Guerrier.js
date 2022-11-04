@@ -4,6 +4,7 @@
 class Guerrier extends Hero {
     constructor(nom, experience, vie = 150, attaque = 40, defense = 20, niveau = 1){
         super(nom, vie, attaque, defense, experience, niveau);
+        this.img = "./assets/guerrier.png";
     }
 
     // avantage d'être un guerrier : la force !

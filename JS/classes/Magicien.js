@@ -6,6 +6,7 @@ class Magicien extends Hero {
         super(nom, vie, attaque, defense, experience, niveau);
         this.mana = mana;
         this.manaMax = mana;
+        this.img = "./assets/firemage.png";
     }
 
     // création boule de feu pour les dommages magiques
