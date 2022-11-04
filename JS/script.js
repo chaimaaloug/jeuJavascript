@@ -51,6 +51,20 @@ function choixJoueur(type) {
         alert("Choissez un pseudo");
     }
 }
+function affichageTexteBarre(barreID, texte, valeur) {
+    let barreJoueur = document.getElementById(barreID);
+
+    let pId = barreID + "p";
+    let p = document.getElementById(pId);
+    if(p == null){
+        p = document.createElement("p");
+        p.id = pId;
+        p.className="barreTexte";
+        barreJoueur.getElementsByClassName("rpgui-progress-track")[0].append(p);
+    }
+    p.innerHTML=texte;
+	RPGUI.set_value(barreJoueur, valeur);
+}
 
 function affichageInfoJoueur(){
     document.getElementById('nom').innerHTML = joueur.nom;
@@ -59,15 +73,20 @@ function affichageInfoJoueur(){
     document.getElementById('defense').innerHTML = joueur.defense;
     document.getElementById('experience').innerHTML = joueur.experience;
     document.getElementById('niveau').innerHTML = joueur.niveau;
+    document.getElementById("imgJoueur").src = joueur.img;
+    affichageTexteBarre("barreVieJoueur", "Vie :" + joueur.vie + "/" + joueur.vieMax, joueur.vie/joueur.vieMax);
 
     // test magicien
     if(isMagicien()){
+        document.getElementById('barreManaJoueur').style = 'display: block;';
         document.getElementById('manaP').style = 'display: block;';
-        document.getElementById('mana').innerHTML = joueur.mana + "/" + joueur.manaMax;;
+        document.getElementById('mana').innerHTML = joueur.mana + "/" + joueur.manaMax;
         document.getElementById('btnBouleDeFeu').style = 'display: inline-block';
+        affichageTexteBarre("barreManaJoueur", joueur.mana + "/" + joueur.manaMax,joueur.mana/joueur.manaMax);
     } 
     // test guerrier
     else {
+        document.getElementById('barreManaJoueur').style = 'display: none';
         document.getElementById('manaP').style = 'display: none';
         document.getElementById('btnBouleDeFeu').style = 'display: none';
     }
@@ -78,6 +97,7 @@ function affichageInfoMonstre(){
     document.getElementById('vieMonstre').innerHTML = monstre.vie + "/" + monstre.vieMax;
     document.getElementById('attaqueMonstre').innerHTML = monstre.attaque;
     document.getElementById('defenseMonstre').innerHTML = monstre.defense;
+    document.getElementById('imgMonstre').src = monstre.img;
 }
 
 function genererMonstre(){
@@ -86,10 +106,10 @@ function genererMonstre(){
             monstre = new Gobelin("Guluk", 50);
             break;
         case 1:
-            monstre = new Monstre("Racaillou", 60, 15, 30, 20);
+            monstre = new Monstre("Racaillou", 60, 15, 30, 20, "./assets/racaillou.png");
             break;
         case 2:
-            monstre = new Monstre("Enderman", 100, 40, 20, 50);
+            monstre = new Monstre("Enderman", 100, 40, 20, 50, "./assets/enderman.png");
             break;
         default:
             monstre = new Gobelin("Guluk", 50);
@@ -178,9 +198,10 @@ function isMagicien(){
     return joueur.mana != undefined;
 }
 
-// document.getElementById("imgJoueur").setAttribute("src", "../assets/firemage.webp")
-// document.getElementById("imgJoueur").setAttribute("width", "250px")
+//document.getElementById("imgJoueur").setAttribute("src", "../assets/firemage.png")
+// document.getElementById("imgJoueur").src = "./assets/firemage.png";
+// document.getElementById("imgJoueur").setAttribute("width", "250px");
 
-let imgJoueur = $("#imgJoueur").attr("src", "../assets/firemage.png").attr("width", "250px").attr("height", "auto").attr("alt", "Mage de feu");
+// let imgJoueur = $("#imgJoueur").attr("src", "../assets/firemage.png").attr("width", "250px").attr("height", "auto").attr("alt", "Mage de feu");
 // let imgMonstre = $("#imgMonstre").attr("src", "../assets/" + monstre + ".png").attr("width", "250px").attr("height", "auto").attr("alt", "Gobelin");
 
