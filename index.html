@@ -11,47 +11,51 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Combat</title>
 </head>
-<body>
-    <div id="starter">
-        <label for="InputName">Choisissez votre pseudo :</label>
-        <input type="text" id="InputName">
-        <button id="BtnMagicien" onclick="choixJoueur('Magicien')">Magicien</button>
-        <button id="BtnGuerrier" onclick="choixJoueur('Guerrier')">Guerrier</button>
-    </div>
-    <div id="game">
-        <h1>Jeu</h1>
-        <div id="infoCombat" class="rpgui-content">
-            <div id="infoJoueur" class="rpgui-container framed">
-                <h2 id="nom"></h2>
-                <img src="" alt="" id="imgJoueur" class="imgPerso">
-                <p>Niveau : <span id="niveau"></span></p>
-                <p>Vie : <span id="vie"></span></p>
-                <div class="rpgui-progress red" id="barreVieJoueur"></div>
-                <p>Attaque : <span id="attaque"></span></p>
-                <p>Defense : <span id="defense"></span></p>
-                <p>Experience : <span id="experience"></span></p>
-                <p id="manaP">Mana : <span id="mana"></span></p>
-                <div class="rpgui-progress blue" id="barreManaJoueur"></div>
-            </div>
-            <div id="infoMonstre" class="rpgui-container framed">
-                <h2 id="nomMonstre"></h2>
-                <img src="" alt="" id="imgMonstre" class="imgPerso">
-                <p>Vie : <span id="vieMonstre"></span></p>
-                <p>Attaque : <span id="attaqueMonstre"></span></p>
-                <p>Defense : <span id="defenseMonstre"></span></p>
+<body class="rpgui-container framed">
+        <div id="starter" class="rpgui-content">
+            <label for="InputName">Choisissez votre pseudo :</label>
+            <input type="text" id="InputName">
+            <div id="buttons">
+                <button id="BtnMagicien" class="rpgui-button" onclick="choixJoueur('Magicien')">Magicien</button> 
+                <button id="BtnGuerrier" class="rpgui-button" onclick="choixJoueur('Guerrier')">Guerrier</button>
             </div>
         </div>
-        <div id="actionJoueur">
-            <button id="btnAttaque" onclick="attaque()">Attaque</button>
-            <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+        <div id="game" class="gameContainer">
+            <h1>Jeu de Combat</h1>
+            <div id="infoCombat" class="rpgui-content">
+                <div id="infoJoueur" class="rpgui-container framed">
+                    <h2 id="nom"></h2>
+                    <img src="" alt="" id="imgJoueur" class="imgPerso">
+                    <p>Niveau : <span id="niveau"></span></p>
+                    <p>Vie : <span id="vie"></span></p>
+                    <div class="rpgui-progress red" id="barreVieJoueur"></div>
+                    <p>Attaque : <span id="attaque"></span></p>
+                    <p>Defense : <span id="defense"></span></p>
+                    <p>Experience : <span id="experience"></span></p>
+                    <p id="manaP">Mana : <span id="mana"></span></p>
+                    <div class="rpgui-progress blue" id="barreManaJoueur"></div>
+                </div>
+                <div id="actionJoueur">
+                    <button id="btnAttaque" class="rpgui-button" onclick="attaque()">Attaque</button>
+                    <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+                </div>
+                <div id="infoMonstre" class="rpgui-container framed">
+                    <h2 id="nomMonstre"></h2>
+                    <img src="" alt="" id="imgMonstre" class="imgPerso">
+                    <p>Vie : <span id="vieMonstre"></span></p>
+                    <p>Attaque : <span id="attaqueMonstre"></span></p>
+                    <p>Defense : <span id="defenseMonstre"></span></p>
+                </div>
+            </div>
         </div>
-    </div>
-
+    
 
 <!-- SCRIPTS -->
     <!-- librairies -->
     <script src="lib/rpgui.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+
     
     <!-- classes -->
     <script src="js/classes/Personnage.js"></script>
