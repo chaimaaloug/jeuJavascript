@@ -11,43 +11,64 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Combat</title>
 </head>
+
 <body class="rpgui-container framed">
-        <div id="starter" class="rpgui-content">
-            <label for="InputName">Choisissez votre pseudo :</label>
+    <div id="starter" class="rpgui-content">
+        <label for="InputName">Choisissez votre pseudo :</label>
             <input type="text" id="InputName">
             <div id="buttons">
                 <button id="BtnMagicien" class="rpgui-button" onclick="choixJoueur('Magicien')">Magicien</button> 
                 <button id="BtnGuerrier" class="rpgui-button" onclick="choixJoueur('Guerrier')">Guerrier</button>
             </div>
-        </div>
-        <div id="game" class="gameContainer">
-            <h1>Jeu de Combat</h1>
-            <div id="infoCombat" class="rpgui-content">
-                <div id="infoJoueur" class="rpgui-container framed">
-                    <h2 id="nom"></h2>
-                    <img src="" alt="" id="imgJoueur" class="imgPerso">
-                    <p>Niveau : <span id="niveau"></span></p>
-                    <p>Vie : <span id="vie"></span></p>
-                    <div class="rpgui-progress red" id="barreVieJoueur"></div>
-                    <p>Attaque : <span id="attaque"></span></p>
-                    <p>Defense : <span id="defense"></span></p>
-                    <p>Experience : <span id="experience"></span></p>
-                    <p id="manaP">Mana : <span id="mana"></span></p>
-                    <div class="rpgui-progress blue" id="barreManaJoueur"></div>
-                </div>
-                <div id="actionJoueur">
-                    <button id="btnAttaque" class="rpgui-button" onclick="attaque()">Attaque</button>
-                    <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
-                </div>
-                <div id="infoMonstre" class="rpgui-container framed">
-                    <h2 id="nomMonstre"></h2>
-                    <img src="" alt="" id="imgMonstre" class="imgPerso">
-                    <p>Vie : <span id="vieMonstre"></span></p>
-                    <p>Attaque : <span id="attaqueMonstre"></span></p>
-                    <p>Defense : <span id="defenseMonstre"></span></p>
-                </div>
+    </div>
+    <div id="game" class="gameContainer">
+        <h1>Jeu de Combat</h1>
+        <div id="infoCombat" class="rpgui-content">
+            <div id="infoJoueur" class="rpgui-container framed">
+                <h2 id="nom"></h2>
+                <img src="" alt="" id="imgJoueur" class="imgPerso">
+                <p>Niveau : <span id="niveau"></span></p>
+                <!-- <p>Vie : <span id="vie"></span></p> -->
+                <div class="rpgui-progress red" id="barreVieJoueur"></div>
+                <!-- <p id="manaP">Mana : <span id="mana"></span></p> -->
+                <div class="rpgui-progress blue" id="barreManaJoueur"></div>
+                <p>Attaque : <span id="attaque"></span></p>
+                <p>Defense : <span id="defense"></span></p>
+                <p>Experience : <span id="experience"></span></p>
+                <p>Argent : <span id="argent"></span></p>
+                <p>Potion de Soin : <span id="potionSoin"></span></p>
+            </div>
+            <div id="actionCombat">
+                <button id="btnAttaque" class="rpgui-button" onclick="attaque()">Attaque</button>
+                <button id="btnBouleDeFeu" class="rpgui-button" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+                <button id="utiliserPotionSoin" class="rpgui-button" onclick="utiliserPotionSoin()">Utiliser Potion de Soin</button>
+                <button id="allerAuMagasin" class="rpgui-button" onclick="afficherMagasin(true)">Aller au magasin</button>
+            </div>
+            <div id="infoMonstre" class="rpgui-container framed">
+                <h2 id="nomMonstre"></h2>
+                <img src="" alt="" id="imgMonstre" class="imgPerso">
+                <p>Vie : <span id="vieMonstre"></span></p>
+                <p>Attaque : <span id="attaqueMonstre"></span></p>
+                <p>Defense : <span id="defenseMonstre"></span></p>
             </div>
         </div>
+        
+    </div>
+    <div id="shop"  class="rpgui-content">
+        <h2>Magasin</h2>
+        <div id="infoShop"  class="rpgui-container framed">
+            <p>Bienvenue au Bazar de Boulzabar</p>
+            <p>Vous avez <span id="argentShop"></span> d'argent</p>
+            <div>
+                <div class="rpgui-icon potion-red"></div>
+                <p>Potion de Soin</p>
+                <button id="acheterPotionSoin" onclick="acheterPotionSoin()">Acheter (-20 Argent)</button>
+            </div>
+        </div>
+        <div id="actionShop">
+            <button id="allerAuCombat" onclick="afficherMagasin(false)">Retourner au combat</button>
+        </div>
+    </div>
     
 
 <!-- SCRIPTS -->

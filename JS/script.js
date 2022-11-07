@@ -2,12 +2,12 @@
 // import magicien from './classes/magicien.js';
 // import monstre from './classes/monstre.js';
 
-const bob = new Guerrier("Bob", 0);
-const valentin = new Magicien("Valou", 0); // il a une attaque boule de feu qui inflige 60 dommages magiques
+// const bob = new Guerrier("Bob", 0);
+// const valentin = new Magicien("Valou", 0); // il a une attaque boule de feu qui inflige 60 dommages magiques
 
-const gobelinGuluk = new Gobelin("Guluk", 50); // possibilité de faire une classe gobelin pour lui donner de nouvelles propriétés, exemple gobelin archer.
-const racaillou = new Monstre("Racaillou", 60, 15, 30, 20); // défenseur
-const enderman = new Monstre("Enderman", 100, 40, 20, 50); // c'est un mini boss
+// const gobelinGuluk = new Gobelin("Guluk", 50); // possibilité de faire une classe gobelin pour lui donner de nouvelles propriétés, exemple gobelin archer.
+// const racaillou = new Monstre("Racaillou", 60, 15, 30, 20); // défenseur
+// const enderman = new Monstre("Enderman", 100, 40, 20, 50); // c'est un mini boss
 
 
 // valentin.bouleDeFeu(gobelinGuluk);
@@ -45,49 +45,55 @@ function choixJoueur(type) {
         $('#game').show();
 
         genererMonstre();
-        refreshInfo();
+        refreshInfoCombat();
+        gererTour();
 
     }else{
         alert("Choissez un pseudo");
     }
 }
+
 function affichageTexteBarre(barreID, texte, valeur) {
     let barreJoueur = document.getElementById(barreID);
 
     let pId = barreID + "p";
     let p = document.getElementById(pId);
+
     if(p == null){
         p = document.createElement("p");
         p.id = pId;
         p.className="barreTexte";
         barreJoueur.getElementsByClassName("rpgui-progress-track")[0].append(p);
     }
+
     p.innerHTML=texte;
 	RPGUI.set_value(barreJoueur, valeur);
 }
 
 function affichageInfoJoueur(){
     document.getElementById('nom').innerHTML = joueur.nom;
-    document.getElementById('vie').innerHTML = joueur.vie + "/" + joueur.vieMax;
+    // document.getElementById('vie').innerHTML = joueur.vie + "/" + joueur.vieMax;
     document.getElementById('attaque').innerHTML = joueur.attaque;
     document.getElementById('defense').innerHTML = joueur.defense;
     document.getElementById('experience').innerHTML = joueur.experience;
     document.getElementById('niveau').innerHTML = joueur.niveau;
     document.getElementById("imgJoueur").src = joueur.img;
     affichageTexteBarre("barreVieJoueur", "Vie :" + joueur.vie + "/" + joueur.vieMax, joueur.vie/joueur.vieMax);
+    document.getElementById('argent').innerHTML = joueur.argent;
+    document.getElementById('potionSoin').innerHTML = joueur.potionSoin;
 
     // test magicien
     if(isMagicien()){
         document.getElementById('barreManaJoueur').style = 'display: block;';
-        document.getElementById('manaP').style = 'display: block;';
-        document.getElementById('mana').innerHTML = joueur.mana + "/" + joueur.manaMax;
+        // document.getElementById('manaP').style = 'display: block;';
+        // document.getElementById('mana').innerHTML = joueur.mana + "/" + joueur.manaMax;
         document.getElementById('btnBouleDeFeu').style = 'display: inline-block';
-        affichageTexteBarre("barreManaJoueur", joueur.mana + "/" + joueur.manaMax,joueur.mana/joueur.manaMax);
+        affichageTexteBarre("barreManaJoueur", "Mana :" +joueur.mana + "/" + joueur.manaMax,joueur.mana/joueur.manaMax);
     } 
     // test guerrier
     else {
         document.getElementById('barreManaJoueur').style = 'display: none';
-        document.getElementById('manaP').style = 'display: none';
+        // document.getElementById('manaP').style = 'display: none';
         document.getElementById('btnBouleDeFeu').style = 'display: none';
     }
 }
@@ -106,10 +112,10 @@ function genererMonstre(){
             monstre = new Gobelin("Guluk", 50);
             break;
         case 1:
-            monstre = new Monstre("Racaillou", 60, 15, 30, 20, "./assets/racaillou.png");
+            monstre = new Monstre("Racaillou", 60, 15, 15, 20, "./assets/racaillou.png", 15);
             break;
         case 2:
-            monstre = new Monstre("Enderman", 100, 40, 20, 50, "./assets/enderman.png");
+            monstre = new Monstre("Enderman", 100, 30, 10, 50, "./assets/enderman.png", 30);
             break;
         default:
             monstre = new Gobelin("Guluk", 50);
@@ -119,14 +125,18 @@ function genererMonstre(){
 }
 
 function attaque(){
-    monstre.vie -= joueur.attaque;
-    refreshInfo();
+    //monstre.vie -= joueur.attaque;
+    monstre.infligerDegat(joueur.attaque);
+    playerTurn = false;
+    refreshInfoCombat();
+    gererTour();
 }
 
 function verifMort(){
     if(monstre.vie <= 0){
         monstre.vie = 0;
         joueur.experience += monstre.experienceDonnee;
+        joueur.argent += monstre.argentDonne;
         alert("Vous avez tué " + monstre.nom);
         checkLevelUp();
         genererMonstre();
@@ -139,41 +149,44 @@ function verifMort(){
 }
 
 function bouleDeFeu(){
-    joueur.bouleDeFeu(monstre);
-    refreshInfo();   
+    const attaqueLancee = joueur.bouleDeFeu(monstre);
+    if(attaqueLancee){
+        playerTurn = false;
+        refreshInfoCombat();
+        gererTour();
+    }
 }
 
-function refreshInfo(){
+function refreshInfoCombat(){
     affichageInfoMonstre();
     verifMort();
     affichageInfoJoueur();
-    gererTour();
+    affichageActionCombat();
 }
 
 function gererTour(){
-    console.log(playerTurn);
-    affichageActionJoueur();
-    if (playerTurn) {
-        playerTurn = false;
-    } else {
+    if (!playerTurn) {
         attaqueDeAdversaire();
     }
 }
 
-function affichageActionJoueur(){
+function affichageActionCombat(){
+    console.log(playerTurn);
     if (playerTurn){
-        document.getElementById('actionJoueur').style = 'display: block';
+        document.getElementById('actionCombat').style = 'display: flex';
+        document.getElementById('utiliserPotionSoin').disabled = (joueur.potionSoin == 0);
+        
     } else {
-        document.getElementById('actionJoueur').style = 'display: none';
+        document.getElementById('actionCombat').style = 'display: none';
     }
 }
 
 function attaqueDeAdversaire(){
-    const degatMonstre = monstre.attaque - joueur.defense
-    joueur.vie -= degatMonstre;
+    const degatMonstre = joueur.infligerDegat(monstre.attaque);
     alert(`${monstre.nom} attaque, vous perdez ${degatMonstre} de vie`);
     playerTurn = true;
-    refreshInfo();
+    refreshInfoCombat();
+    gererTour();
 }
 
 function checkLevelUp() {
@@ -190,7 +203,7 @@ function checkLevelUp() {
         }
         alert("Vous êtes monté en niveau")
     }
-    // augmenter bouleDeFeu (lier attaque ?)
+
     // monstre + forts ?
 }
 
@@ -198,10 +211,49 @@ function isMagicien(){
     return joueur.mana != undefined;
 }
 
-//document.getElementById("imgJoueur").setAttribute("src", "../assets/firemage.png")
-// document.getElementById("imgJoueur").src = "./assets/firemage.png";
-// document.getElementById("imgJoueur").setAttribute("width", "250px");
+function afficherMagasin(isAffichageMagasin){
+    if (isAffichageMagasin === true){
+        $('#game').hide();
+        $('#shop').show();
+        affichageInfoShop();
+    } else {
+        $('#shop').hide();
+        $('#game').show();
+        refreshInfoCombat();
+    }
+}
 
-// let imgJoueur = $("#imgJoueur").attr("src", "../assets/firemage.png").attr("width", "250px").attr("height", "auto").attr("alt", "Mage de feu");
-// let imgMonstre = $("#imgMonstre").attr("src", "../assets/" + monstre + ".png").attr("width", "250px").attr("height", "auto").attr("alt", "Gobelin");
+function utiliserPotionSoin(){
+    if (joueur.potionSoin > 0){
+        joueur.potionSoin--;
+        const vieRecup = 60*(0.75*joueur.niveau);//pour que la potion reste intéressante, son soin augmente avec le niveau.
+        joueur.vie += vieRecup;
+        checkVieMax();
+        playerTurn = false;
+        alert(`Vous avez récupéré ${vieRecup} points de vie`)
+        refreshInfoCombat();
+        gererTour();
+    } else {
+        alert("Vous n'avez pas de potion de soin");
+    }
+}
 
+function checkVieMax(){
+    if (joueur.vie > joueur.vieMax){
+        joueur.vie = joueur.vieMax;
+    }
+}
+
+function acheterPotionSoin(){
+    if (joueur.argent >= 20){
+        joueur.potionSoin++;
+        joueur.argent -= 20;
+        affichageInfoShop();
+    }else{
+        alert("Vous n'avez pas assez d'argent (┬┬﹏┬┬)");
+    }
+}
+
+function affichageInfoShop(){
+    document.getElementById('argentShop').innerHTML = joueur.argent;
+}

@@ -2,8 +2,8 @@
 
 // export 
 class Guerrier extends Hero {
-    constructor(nom, experience, vie = 150, attaque = 40, defense = 20, niveau = 1){
-        super(nom, vie, attaque, defense, experience, niveau);
+    constructor(nom, experience, vie = 150, attaque = 40, defense = 20, niveau = 1, argent = 0, potionSoin = 0){
+        super(nom, vie, attaque, defense, experience, niveau, argent, potionSoin);
         this.img = "./assets/guerrier.png";
     }
 

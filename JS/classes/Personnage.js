@@ -31,4 +31,14 @@ class Personnage {
         return this.niveau;
     }
 
+    infligerDegat(nbDegat){ //nbDegat sera égal à monstre.attaque ou joueur.attaque ou des dégats d'une compétence
+        let degatSubi = 1;
+        if (nbDegat > this.defense) {
+            degatSubi = nbDegat - this.defense;
+            this.vie -= (degatSubi);
+        }else {
+            this.vie -= degatSubi; //Dégat mini
+        }
+        return degatSubi;
+    }
 }
