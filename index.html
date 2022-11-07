@@ -25,13 +25,15 @@
                 <h2 id="nom"></h2>
                 <img src="" alt="" id="imgJoueur" class="imgPerso">
                 <p>Niveau : <span id="niveau"></span></p>
-                <p>Vie : <span id="vie"></span></p>
+                <!-- <p>Vie : <span id="vie"></span></p> -->
                 <div class="rpgui-progress red" id="barreVieJoueur"></div>
+                <!-- <p id="manaP">Mana : <span id="mana"></span></p> -->
+                <div class="rpgui-progress blue" id="barreManaJoueur"></div>
                 <p>Attaque : <span id="attaque"></span></p>
                 <p>Defense : <span id="defense"></span></p>
                 <p>Experience : <span id="experience"></span></p>
-                <p id="manaP">Mana : <span id="mana"></span></p>
-                <div class="rpgui-progress blue" id="barreManaJoueur"></div>
+                <p>Argent : <span id="argent"></span></p>
+                <p>Potion de Soin : <span id="potionSoin"></span></p>
             </div>
             <div id="infoMonstre" class="rpgui-container framed">
                 <h2 id="nomMonstre"></h2>
@@ -41,9 +43,26 @@
                 <p>Defense : <span id="defenseMonstre"></span></p>
             </div>
         </div>
-        <div id="actionJoueur">
+        <div id="actionCombat">
             <button id="btnAttaque" onclick="attaque()">Attaque</button>
             <button id="btnBouleDeFeu" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+            <button id="utiliserPotionSoin" onclick="utiliserPotionSoin()">Utiliser une Potion de Soin</button>
+            <button id="allerAuMagasin" onclick="afficherMagasin(true)">Aller au magasin</button>
+        </div>
+    </div>
+    <div id="shop"  class="rpgui-content">
+        <h2>Magasin</h2>
+        <div id="infoShop"  class="rpgui-container framed">
+            <p>Bienvenue au Bazar de Boulzabar</p>
+            <p>Vous avez <span id="argentShop"></span> d'argent</p>
+            <div>
+                <div class="rpgui-icon potion-red"></div>
+                <p>Potion de Soin</p>
+                <button id="acheterPotionSoin" onclick="acheterPotionSoin()">Acheter (-20 Argent)</button>
+            </div>
+        </div>
+        <div id="actionShop">
+            <button id="allerAuCombat" onclick="afficherMagasin(false)">Retourner au combat</button>
         </div>
     </div>
 
