@@ -15,10 +15,13 @@ body {
     justify-content: space-evenly;
     position: static;
 }
+#actionCombat {
+    flex-direction: column;
+}
 
 #btnBouleDeFeu {display: none;}
 
-#infoJoueur, #infoMonstre {
+#infoJoueur, #infoMonstre, #infoShop {
     position: static;
 }
 

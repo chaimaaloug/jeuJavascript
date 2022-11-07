@@ -173,7 +173,7 @@ function gererTour(){
 function affichageActionCombat(){
     console.log(playerTurn);
     if (playerTurn){
-        document.getElementById('actionCombat').style = 'display: block';
+        document.getElementById('actionCombat').style = 'display: flex';
         document.getElementById('utiliserPotionSoin').disabled = (joueur.potionSoin == 0);
         
     } else {
