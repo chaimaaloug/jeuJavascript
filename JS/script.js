@@ -278,3 +278,12 @@ const sonBtnBoucleDeFeu = document.getElementById("btnBouleDeFeu");
 sonBtnBoucleDeFeu.addEventListener("click", () => {
     audio3.play();
 });
+
+
+
+const btnrecommencerLeCombat = document.getElementById("recommencerLeCombat");
+function recommencerLeCombat() {
+    console.log(btnrecommencerLeCombat)
+    window.history.back();
+    console.log(window)
+}
