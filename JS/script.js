@@ -25,6 +25,9 @@ let pseudo;
 let monstre;
 
 let playerTurn = true;
+let monstreCont = {
+    
+};
 
 // initialisation 
 function choixJoueur(type) {
@@ -134,7 +137,11 @@ function attaque(){
 
 function verifMort(){
     if(monstre.vie <= 0){
+
         monstre.vie = 0;
+        monstreCont += monstre.nom + " "
+        console.log("monstre conteur", monstreCont)
+
         joueur.experience += monstre.experienceDonnee;
         joueur.argent += monstre.argentDonne;
         console.log("Vous avez tué " + monstre.nom);
@@ -143,10 +150,10 @@ function verifMort(){
     }
     if(joueur.vie <= 0){
         joueur.vie = 0;
-        console.log("Vous êtes mort");
-        location.reload();
+        afficherGameOver(true)
     }
 }
+
 
 function bouleDeFeu(){
     const attaqueLancee = joueur.bouleDeFeu(monstre);
@@ -222,6 +229,19 @@ function afficherMagasin(isAffichageMagasin){
     }
 }
 
+function afficherGameOver(isAffichageGameOver){
+    if (isAffichageGameOver === true){
+        $('#game').hide();
+        $('#gameOver').show();
+        affichageInfoShop();
+    } else {
+        $('#gameOver').hide();
+        $('#game').show();
+    }
+}
+
+
+
 function utiliserPotionSoin(){
     if (joueur.potionSoin > 0){
         joueur.potionSoin--;
@@ -250,11 +270,17 @@ function acheterPotionSoin(){
         affichageInfoShop();
     }else{
         alert("Vous n'avez pas assez d'argent (┬┬﹏┬┬)");
+       
+        //setTimeout(function(){ $('#argentMessageText').show() }, 2000)
     }
 }
 
 function affichageInfoShop(){
     document.getElementById('argentShop').innerHTML = joueur.argent;
+}
+
+function quitterJeu() {
+    location.reload();
 }
 
 
@@ -283,6 +309,11 @@ sonBtnBoucleDeFeu.addEventListener("click", () => {
 });
 
 
+const audio4 = new Audio("assets/sounds/money.mp3");
+const sonAllerMagasin = document.getElementById("allerAuMagasin");
+sonAllerMagasin.addEventListener("click", () => {
+    audio4.play();
+});
 
 monstreCont += monstre.nom
 console.log(monstreCont[0][0])
