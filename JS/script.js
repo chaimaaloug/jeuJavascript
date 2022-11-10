@@ -137,13 +137,13 @@ function verifMort(){
         monstre.vie = 0;
         joueur.experience += monstre.experienceDonnee;
         joueur.argent += monstre.argentDonne;
-        alert("Vous avez tué " + monstre.nom);
+        //alert("Vous avez tué " + monstre.nom);
         checkLevelUp();
         genererMonstre();
     }
     if(joueur.vie <= 0){
         joueur.vie = 0;
-        alert("Vous êtes mort");
+        //alert("Vous êtes mort");
         location.reload();
     }
 }
@@ -171,7 +171,6 @@ function gererTour(){
 }
 
 function affichageActionCombat(){
-    console.log(playerTurn);
     if (playerTurn){
         document.getElementById('actionCombat').style = 'display: flex';
         document.getElementById('utiliserPotionSoin').disabled = (joueur.potionSoin == 0);
@@ -183,7 +182,7 @@ function affichageActionCombat(){
 
 function attaqueDeAdversaire(){
     const degatMonstre = joueur.infligerDegat(monstre.attaque);
-    alert(`${monstre.nom} attaque, vous perdez ${degatMonstre} de vie`);
+    //alert(`${monstre.nom} attaque, vous perdez ${degatMonstre} de vie`);
     playerTurn = true;
     refreshInfoCombat();
     gererTour();
@@ -201,7 +200,7 @@ function checkLevelUp() {
             joueur.manaMax += 20;
             joueur.mana = joueur.manaMax;
         }
-        alert("Vous êtes monté en niveau")
+        //alert("Vous êtes monté en niveau")
     }
 
     // monstre + forts ?
@@ -230,7 +229,7 @@ function utiliserPotionSoin(){
         joueur.vie += vieRecup;
         checkVieMax();
         playerTurn = false;
-        alert(`Vous avez récupéré ${vieRecup} points de vie`)
+        //alert(`Vous avez récupéré ${vieRecup} points de vie`)
         refreshInfoCombat();
         gererTour();
     } else {
