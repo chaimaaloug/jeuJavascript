@@ -43,6 +43,7 @@
                 <button id="btnBouleDeFeu" class="rpgui-button" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
                 <button id="utiliserPotionSoin" class="rpgui-button" onclick="utiliserPotionSoin()">Utiliser Potion de Soin</button>
                 <button id="allerAuMagasin" class="rpgui-button" onclick="afficherMagasin(true)">Aller au magasin</button>
+                <button id="btnQuitter" class="rpgui-button" type="button" onclick="quitterJeu()">Quitter le Jeu</button>
             </div>
             <div id="infoMonstre" class="rpgui-container framed">
                 <h2 id="nomMonstre"></h2>
@@ -59,15 +60,23 @@
         <div id="infoShop"  class="rpgui-container framed">
             <p>Bienvenue au Bazar de Boulzabar</p>
             <p>Vous avez <span id="argentShop"></span> d'argent</p>
-            <div>
+            <div id="potionSoinIcon">
                 <div class="rpgui-icon potion-red"></div>
                 <p>Potion de Soin</p>
-                <button id="acheterPotionSoin" class="rpgui-button" onclick="acheterPotionSoin()">Acheter (-20 Argent)</button>
             </div>
         </div>
         <div id="actionShop">
+            <button id="acheterPotionSoin" class="rpgui-button" onclick="acheterPotionSoin()">Acheter (-20 Argent)</button>
             <button id="allerAuCombat" class="rpgui-button" onclick="afficherMagasin(false)">Retourner au combat</button>
         </div>
+        <div id="argentMessageText" class="rpgui-container">
+            <p>"Vous n'avez pas assez d'argent (┬┬﹏┬┬)"</p>
+        </div>
+    </div>
+
+    <div id="gameOver"  class="rpgui-content">
+        <h2>Game Over</h2>
+        <button id="btnRejouer" class="rpgui-button" onclick="quitterJeu()">Rejouer</button>
     </div>
     
 

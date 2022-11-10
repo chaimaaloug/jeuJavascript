@@ -8,6 +8,7 @@ body {
     text-align: center;
     background: url("../assets/brown-wood-texture.jpg") no-repeat 50% 50% / cover;
     color: #fff;
+    image-rendering: pixelated;
 }
 
 #game {display: none;}
@@ -56,14 +57,10 @@ body {
     color: white;
 }
 
-
 #acheterPotionSoin,
 #allerAuCombat {
   padding: 1rem 4rem;
 }
-
-
-
 
 #allerAuCombat {
   margin-top: 1rem;
@@ -72,6 +69,7 @@ body {
 .magasinContainer {
   padding: 3rem 1.5rem;
   margin-left: -1.5rem;
+  border: none;
 }
 
 .imgPerso {
@@ -89,4 +87,24 @@ body {
 
 #shop{
     display: none;
+}
+
+#gameOver {
+    display: none;
+    padding: 18rem 1.5rem;
+    margin-left: -1.5rem;
+}
+
+#argentMessageText {
+    display: none;
+    padding: 5rem;
+    margin-left: 4.89rem;
+}
+
+#potionSoinIcon {
+    margin: 3rem;
+}
+
+.rpgui-container.framed #infoShop{
+  border: none;
 }
