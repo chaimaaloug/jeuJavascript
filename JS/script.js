@@ -257,3 +257,27 @@ function acheterPotionSoin(){
 function affichageInfoShop(){
     document.getElementById('argentShop').innerHTML = joueur.argent;
 }
+
+
+// Ajout des Sons 
+
+const audio1 = new Audio("assets/sounds/shot2.wav");
+const sonBtnAttaque = document.getElementById("btnAttaque");
+sonBtnAttaque.addEventListener("click", () => {
+    audio1.play();
+});
+
+const audio2 = new Audio("assets/sounds/heal.mp3");
+const sonBtnPotionSoin = document.getElementById("utiliserPotionSoin");
+sonBtnPotionSoin.addEventListener("click", () => {
+    audio2.play();
+});
+
+const audio3 = new Audio("assets/sounds/fireBall.mp3");
+const sonBtnBoucleDeFeu = document.getElementById("btnBouleDeFeu");
+sonBtnBoucleDeFeu.addEventListener("click", () => {
+    audio3.play();
+});
+
+
+

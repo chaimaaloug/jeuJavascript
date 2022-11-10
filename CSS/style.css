@@ -9,15 +9,19 @@ body {
     background: url("../assets/brown-wood-texture.jpg") no-repeat 50% 50% / cover;
     color: #fff;
 }
+
 #game {display: none;}
 
 #infoCombat {
     display: flex; 
     justify-content: space-evenly;
     position: static;
+    margin: 0.67rem 0;
 }
+
 #actionCombat {
     flex-direction: column;
+    justify-content: center;
 }
 
 #btnBouleDeFeu {display: none;}
@@ -41,20 +45,37 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-}
+} 
 
 #InputName {
     margin-top: 14px;
 }
-
 
 #buttons {
     margin-top: 18px;
     color: white;
 }
 
+
+#acheterPotionSoin,
+#allerAuCombat {
+  padding: 1rem 4rem;
+}
+
+
+
+
+#allerAuCombat {
+  margin-top: 1rem;
+}
+
+.magasinContainer {
+  padding: 3rem 1.5rem;
+  margin-left: -1.5rem;
+}
+
 .imgPerso {
-    width: 10rem;
+    width: 8rem;
     height: auto;
 }
 
