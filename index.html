@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Combat</title>
 </head>
-
 <body class="rpgui-container framed">
+    <div id="son" class="rpgui-cursor-point">
+        <img src="./assets/icone-speaker.svg" onclick="couperSon(true)" alt="couper le son" id="imgSon">
+        <img src="./assets/icone-mute.svg" onclick="couperSon(false)" alt="remettre le son" id="imgSonCoupe">
+    </div>
     <div id="starter" class="rpgui-content">
         <label for="InputName">Choisissez votre pseudo :</label>
             <input type="text" id="InputName">

@@ -10,6 +10,26 @@ body {
     color: #fff;
 }
 
+/* p{
+    // margin: 0;
+} */
+#son {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 40px;
+    height: auto;
+}
+#son img {
+    width: 40px;
+    height: auto;
+}
+
+#imgSonCoupe {
+    display: none;
+}
+
 #game {display: none;}
 
 #infoCombat {

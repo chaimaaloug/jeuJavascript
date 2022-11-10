@@ -137,13 +137,13 @@ function verifMort(){
         monstre.vie = 0;
         joueur.experience += monstre.experienceDonnee;
         joueur.argent += monstre.argentDonne;
-        //alert("Vous avez tué " + monstre.nom);
+        console.log("Vous avez tué " + monstre.nom);
         checkLevelUp();
         genererMonstre();
     }
     if(joueur.vie <= 0){
         joueur.vie = 0;
-        //alert("Vous êtes mort");
+        console.log("Vous êtes mort");
         location.reload();
     }
 }
@@ -182,7 +182,7 @@ function affichageActionCombat(){
 
 function attaqueDeAdversaire(){
     const degatMonstre = joueur.infligerDegat(monstre.attaque);
-    //alert(`${monstre.nom} attaque, vous perdez ${degatMonstre} de vie`);
+    console.log(`${monstre.nom} attaque, vous perdez ${degatMonstre} de vie`);
     playerTurn = true;
     refreshInfoCombat();
     gererTour();
@@ -200,7 +200,7 @@ function checkLevelUp() {
             joueur.manaMax += 20;
             joueur.mana = joueur.manaMax;
         }
-        //alert("Vous êtes monté en niveau")
+        console.log("Vous êtes monté en niveau")
     }
 
     // monstre + forts ?
@@ -229,7 +229,7 @@ function utiliserPotionSoin(){
         joueur.vie += vieRecup;
         checkVieMax();
         playerTurn = false;
-        //alert(`Vous avez récupéré ${vieRecup} points de vie`)
+        console.log(`Vous avez récupéré ${vieRecup} points de vie`)
         refreshInfoCombat();
         gererTour();
     } else {
@@ -260,6 +260,10 @@ function affichageInfoShop(){
 
 // Ajout des Sons 
 
+function couperSon(){
+    
+}
+
 const audio1 = new Audio("assets/sounds/shot2.wav");
 const sonBtnAttaque = document.getElementById("btnAttaque");
 sonBtnAttaque.addEventListener("click", () => {
@@ -280,3 +284,5 @@ sonBtnBoucleDeFeu.addEventListener("click", () => {
 
 
 
+monstreCont += monstre.nom
+console.log(monstreCont[0][0])
