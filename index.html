@@ -22,8 +22,7 @@
             </div>
     </div>
     <div id="game" class="gameContainer">
-        <h1>Jeu de Combat</h1>
-        <div id="infoCombat" class="rpgui-content">
+        <div id="infoCombat" class="rpgui-content jeuContainer">
             <div id="infoJoueur" class="rpgui-container framed">
                 <h2 id="nom"></h2>
                 <img src="" alt="" id="imgJoueur" class="imgPerso">
@@ -39,6 +38,7 @@
                 <p>Potion de Soin : <span id="potionSoin"></span></p>
             </div>
             <div id="actionCombat">
+                <h1>Jeu de Combat</h1>
                 <button id="btnAttaque" class="rpgui-button" onclick="attaque()">Attaque</button>
                 <button id="btnBouleDeFeu" class="rpgui-button" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
                 <button id="utiliserPotionSoin" class="rpgui-button" onclick="utiliserPotionSoin()">Utiliser Potion de Soin</button>
@@ -54,7 +54,7 @@
         </div>
         
     </div>
-    <div id="shop"  class="rpgui-content">
+    <div id="shop"  class="rpgui-content magasinContainer">
         <h2>Magasin</h2>
         <div id="infoShop"  class="rpgui-container framed">
             <p>Bienvenue au Bazar de Boulzabar</p>
