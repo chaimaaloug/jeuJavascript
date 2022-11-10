@@ -281,9 +281,3 @@ sonBtnBoucleDeFeu.addEventListener("click", () => {
 
 
 
-const btnrecommencerLeCombat = document.getElementById("recommencerLeCombat");
-function recommencerLeCombat() {
-    console.log(btnrecommencerLeCombat)
-    window.history.back();
-    console.log(window)
-}
