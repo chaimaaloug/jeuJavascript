@@ -34,6 +34,7 @@
                 <div class="rpgui-progress red" id="barreVieJoueur"></div>
                 <!-- <p id="manaP">Mana : <span id="mana"></span></p> -->
                 <div class="rpgui-progress blue" id="barreManaJoueur"></div>
+                <div class="rpgui-progress" id="barreRageJoueur"></div>
                 <p>Attaque : <span id="attaque"></span></p>
                 <p>Defense : <span id="defense"></span></p>
                 <p>Experience : <span id="experience"></span></p>
@@ -42,6 +43,9 @@
             </div>
             <div id="actionCombat">
                 <h1>Jeu de Combat</h1>
+                <div>
+                    <p>Vous avez tué <span id="compteur">0</span> monstre(s)</p>
+                </div>
                 <button id="btnAttaque" class="rpgui-button" onclick="attaque()">Attaque</button>
                 <button id="btnBouleDeFeu" class="rpgui-button" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
                 <button id="utiliserPotionSoin" class="rpgui-button" onclick="utiliserPotionSoin()">Utiliser Potion de Soin</button>
@@ -79,6 +83,7 @@
 
     <div id="gameOver"  class="rpgui-content">
         <h2>Game Over</h2>
+        <div id="listeMonstreTue"></div>
         <button id="btnRejouer" class="rpgui-button" onclick="quitterJeu()">Rejouer</button>
     </div>
     

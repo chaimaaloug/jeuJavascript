@@ -32,6 +32,7 @@ class Personnage {
     }
 
     infligerDegat(nbDegat){ //nbDegat sera égal à monstre.attaque ou joueur.attaque ou des dégats d'une compétence
+        this.verifRageGuerrier();
         let degatSubi = 1;
         if (nbDegat > this.defense) {
             degatSubi = nbDegat - this.defense;
@@ -40,5 +41,14 @@ class Personnage {
             this.vie -= degatSubi; //Dégat mini
         }
         return degatSubi;
+    }
+
+    verifRageGuerrier(){
+        if(this.rage != null){
+            this.rage += 20;
+            if(this.rage >= this.rageMax){
+                this.rage = this.rageMax;
+            }
+        }
     }
 }
