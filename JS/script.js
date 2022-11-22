@@ -26,6 +26,8 @@ let monstre;
 
 let playerTurn = true;
 
+let compteurMonstre = [];
+
 // initialisation 
 function choixJoueur(type) {
     console.log(type);
@@ -89,12 +91,15 @@ function affichageInfoJoueur(){
         // document.getElementById('mana').innerHTML = joueur.mana + "/" + joueur.manaMax;
         document.getElementById('btnBouleDeFeu').style = 'display: inline-block';
         affichageTexteBarre("barreManaJoueur", "Mana :" +joueur.mana + "/" + joueur.manaMax,joueur.mana/joueur.manaMax);
+        document.getElementById('barreRageJoueur').style = 'display: none;';
     } 
     // test guerrier
     else {
         document.getElementById('barreManaJoueur').style = 'display: none';
         // document.getElementById('manaP').style = 'display: none';
         document.getElementById('btnBouleDeFeu').style = 'display: none';
+        document.getElementById('barreRageJoueur').style = 'display: block;';
+        affichageTexteBarre("barreRageJoueur", "Rage :" +joueur.rage + "/" + joueur.rageMax,joueur.rage/joueur.rageMax);
     }
 }
 
@@ -135,6 +140,10 @@ function attaque(){
 function verifMort(){
     if(monstre.vie <= 0){
         monstre.vie = 0;
+        
+        compteurMonstre.push(monstre);
+        console.log("Compteur monstre", compteurMonstre.length, compteurMonstre);
+        afficherNbrMonstreTue();
 
         joueur.experience += monstre.experienceDonnee;
         joueur.argent += monstre.argentDonne;
@@ -227,7 +236,7 @@ function afficherGameOver(isAffichageGameOver){
     if (isAffichageGameOver === true){
         $('#game').hide();
         $('#gameOver').show();
-        affichageInfoShop();
+        afficherListeMonstreTue();
     } else {
         $('#gameOver').hide();
         $('#game').show();
@@ -310,6 +319,7 @@ sonAllerMagasin.addEventListener("click", () => {
 });
 
 
+
 // Activer-désactiver le son 
 $( document ).ready(function() {
 
@@ -325,3 +335,29 @@ $( document ).ready(function() {
     });
 
 });
+
+function afficherNbrMonstreTue(){
+    document.getElementById("compteur").innerHTML = compteurMonstre.length;
+}
+
+function afficherListeMonstreTue(){
+    const listeMonstreTue = document.getElementById('listeMonstreTue');
+    // création d'un objet pour simplifier la manipulation pour le compteur de monstre tué
+    // clef = nom du monstre et sa valeur = total tué
+    let objetMonstreTue = {}
+    for (let monstre of compteurMonstre){
+        // objetMonstreTue[monstre.nom] == null
+        if (!objetMonstreTue.hasOwnProperty(monstre.nom)){
+            objetMonstreTue[monstre.nom] = 1;
+        } else {
+            objetMonstreTue[monstre.nom]++;
+        }
+    }
+    
+    
+    let texte = "";
+    Object.keys(objetMonstreTue).forEach( monstreNom => {
+        texte += "<p>" + monstreNom + " tués : "  + objetMonstreTue[monstreNom] + "</p>";
+    })
+    listeMonstreTue.innerHTML = texte;
+}
