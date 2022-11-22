@@ -172,7 +172,6 @@ function gererTour(){
 }
 
 function affichageActionCombat(){
-    console.log(playerTurn);
     if (playerTurn){
         document.getElementById('actionCombat').style = 'display: flex';
         document.getElementById('utiliserPotionSoin').disabled = (joueur.potionSoin == 0);
@@ -280,6 +279,10 @@ function quitterJeu() {
 
 
 // Ajout des Sons 
+
+function couperSon(){
+    
+}
 
 const audio1 = new Audio("assets/sounds/shot2.wav");
 const sonBtnAttaque = document.getElementById("btnAttaque");

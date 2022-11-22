@@ -2,8 +2,8 @@
 
 // export 
 class Magicien extends Hero {
-    constructor(nom, experience, vie = 100, attaque = 20, defense = 10, mana = 100, niveau = 1, argent = 0, potionSoin = 0){
-        super(nom, vie, attaque, defense, experience, niveau, argent, potionSoin);
+    constructor(nom, experience, vie = 100, attaque = 20, defense = 10, mana = 100, niveau = 1, argent = 0, potionSoin = 0, type = "magicien"){
+        super(nom, vie, attaque, defense, experience, niveau, argent, potionSoin, type);
         this.mana = mana;
         this.manaMax = mana;
         this.img = "./assets/firemage.png";
