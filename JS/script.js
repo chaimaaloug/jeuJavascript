@@ -25,9 +25,6 @@ let pseudo;
 let monstre;
 
 let playerTurn = true;
-let monstreCont = {
-    
-};
 
 // initialisation 
 function choixJoueur(type) {
@@ -137,10 +134,7 @@ function attaque(){
 
 function verifMort(){
     if(monstre.vie <= 0){
-
         monstre.vie = 0;
-        monstreCont += monstre.nom + " "
-        console.log("monstre conteur", monstreCont)
 
         joueur.experience += monstre.experienceDonnee;
         joueur.argent += monstre.argentDonne;
@@ -312,3 +306,19 @@ sonAllerMagasin.addEventListener("click", () => {
     audio4.play();
 });
 
+
+// Activer-désactiver le son 
+$( document ).ready(function() {
+
+    jQuery('#playSound').on('click', function () {
+
+        if(jQuery(this).hasClass('active')) {
+            jQuery(this).find('audio').trigger('pause');
+            jQuery(this).removeClass('active');
+        } else {
+            jQuery(this).find('audio').trigger('play');
+            jQuery(this).addClass('active');
+        }
+    });
+
+});
