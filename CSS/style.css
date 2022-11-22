@@ -133,16 +133,20 @@ body {
 
 #playSound.active .play{
     display: none;
+    width: 50px;
 }
 
 #playSound.active .pause{
     display: block;
+    width: 50px;
 }
 
 #playSound .play{
     display: block;
+    width: 50px;
 }
 
 #playSound .pause{
     display: none;
+    width: 50px;
 }
