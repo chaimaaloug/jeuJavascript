@@ -319,7 +319,6 @@ sonAllerMagasin.addEventListener("click", () => {
 });
 
 
-
 // Activer-désactiver le son 
 $( document ).ready(function() {
 
