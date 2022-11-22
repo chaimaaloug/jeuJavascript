@@ -25,6 +25,7 @@ let pseudo;
 let monstre;
 
 let playerTurn = true;
+
 let compteurMonstre = [];
 
 // initialisation 
@@ -138,8 +139,8 @@ function attaque(){
 
 function verifMort(){
     if(monstre.vie <= 0){
-
         monstre.vie = 0;
+        
         compteurMonstre.push(monstre);
         console.log("Compteur monstre", compteurMonstre.length, compteurMonstre);
         afficherNbrMonstreTue();
@@ -315,6 +316,23 @@ const audio4 = new Audio("assets/sounds/money.mp3");
 const sonAllerMagasin = document.getElementById("allerAuMagasin");
 sonAllerMagasin.addEventListener("click", () => {
     audio4.play();
+});
+
+
+// Activer-désactiver le son 
+$( document ).ready(function() {
+
+    jQuery('#playSound').on('click', function () {
+
+        if(jQuery(this).hasClass('active')) {
+            jQuery(this).find('audio').trigger('pause');
+            jQuery(this).removeClass('active');
+        } else {
+            jQuery(this).find('audio').trigger('play');
+            jQuery(this).addClass('active');
+        }
+    });
+
 });
 
 function afficherNbrMonstreTue(){

@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
     <link href="lib/rpgui.css" rel="stylesheet" type="text/css" >
     <link rel="stylesheet" href="css/style.css">
     <title>Combat</title>
 </head>
 <body class="rpgui-container framed">
-    <div id="son" class="rpgui-cursor-point">
-        <img src="./assets/icone-speaker.svg" onclick="couperSon(true)" alt="couper le son" id="imgSon">
-        <img src="./assets/icone-mute.svg" onclick="couperSon(false)" alt="remettre le son" id="imgSonCoupe">
+    <div id="playSound">
+        <audio src="https://dl.dropbox.com/s/oswkgcw749xc8xs/The-Noisy-Freaks.mp3"></audio>
+        <img class="play" src="assets/icone-speaker.svg"/>
+        <img class="pause" src="assets/icone-mute.svg"/>
     </div>
     <div id="starter" class="rpgui-content">
         <label for="InputName">Choisissez votre pseudo :</label>
