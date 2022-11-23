@@ -90,6 +90,7 @@ function affichageInfoJoueur(){
         // document.getElementById('manaP').style = 'display: block;';
         // document.getElementById('mana').innerHTML = joueur.mana + "/" + joueur.manaMax;
         document.getElementById('btnBouleDeFeu').style = 'display: inline-block';
+        document.getElementById('btnRage').style = 'display: none';
         affichageTexteBarre("barreManaJoueur", "Mana :" +joueur.mana + "/" + joueur.manaMax,joueur.mana/joueur.manaMax);
         document.getElementById('barreRageJoueur').style = 'display: none;';
     } 
@@ -98,6 +99,7 @@ function affichageInfoJoueur(){
         document.getElementById('barreManaJoueur').style = 'display: none';
         // document.getElementById('manaP').style = 'display: none';
         document.getElementById('btnBouleDeFeu').style = 'display: none';
+        document.getElementById('btnRage').style = 'display: inline-block';
         document.getElementById('barreRageJoueur').style = 'display: block;';
         affichageTexteBarre("barreRageJoueur", "Rage :" +joueur.rage + "/" + joueur.rageMax,joueur.rage/joueur.rageMax);
     }
@@ -167,6 +169,13 @@ function bouleDeFeu(){
     }
 }
 
+function enrager(){
+    joueur.enrager();
+    playerTurn = false;
+    refreshInfoCombat();
+    gererTour();
+}
+
 function refreshInfoCombat(){
     affichageInfoMonstre();
     verifMort();
@@ -177,6 +186,18 @@ function refreshInfoCombat(){
 function gererTour(){
     if (!playerTurn) {
         attaqueDeAdversaire();
+    } else {
+        if (!isMagicien()) {
+            if (joueur.isEnrage){
+                if (joueur.nbTourRageRestant > 0){
+                    joueur.nbTourRageRestant--
+                } else {
+                    joueur.desenrager();
+                    affichageInfoJoueur();
+                    affichageActionCombat();
+                }
+            }
+        }
     }
 }
 
@@ -184,6 +205,8 @@ function affichageActionCombat(){
     if (playerTurn){
         document.getElementById('actionCombat').style = 'display: flex';
         document.getElementById('utiliserPotionSoin').disabled = (joueur.potionSoin == 0);
+        document.getElementById('btnBouleDeFeu').disabled = (joueur.mana < 20);
+        document.getElementById('btnRage').disabled = (joueur.rage < 40 || joueur.isEnrage);
         
     } else {
         document.getElementById('actionCombat').style = 'display: none';
