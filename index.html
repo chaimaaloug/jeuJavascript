@@ -14,7 +14,7 @@
     <title>Combat</title>
 </head>
 <body class="rpgui-container framed">
-    <div id="playSound">
+    <div id="playSound" class="rpgui-cursor-point">
         <audio src="https://dl.dropbox.com/s/oswkgcw749xc8xs/The-Noisy-Freaks.mp3"></audio>
         <img class="play" src="assets/icone-speaker.svg"/>
         <img class="pause" src="assets/icone-mute.svg"/>
@@ -51,6 +51,7 @@
                 </div>
                 <button id="btnAttaque" class="rpgui-button" onclick="attaque()">Attaque</button>
                 <button id="btnBouleDeFeu" class="rpgui-button" onclick="bouleDeFeu()">Boule de feu (-20 mana)</button>
+                <button id="btnRage" class="rpgui-button" onclick="enrager()">Enrager (-40 rage)</button>
                 <button id="utiliserPotionSoin" class="rpgui-button" onclick="utiliserPotionSoin()">Utiliser Potion de Soin</button>
                 <button id="allerAuMagasin" class="rpgui-button" onclick="afficherMagasin(true)">Aller au magasin</button>
                 <button id="btnQuitter" class="rpgui-button" type="button" onclick="quitterJeu()">Quitter le Jeu</button>

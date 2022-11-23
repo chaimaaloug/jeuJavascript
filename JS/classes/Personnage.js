@@ -32,7 +32,7 @@ class Personnage {
     }
 
     infligerDegat(nbDegat){ //nbDegat sera égal à monstre.attaque ou joueur.attaque ou des dégats d'une compétence
-        this.verifRageGuerrier();
+        // this.verifRageGuerrier();
         let degatSubi = 1;
         if (nbDegat > this.defense) {
             degatSubi = nbDegat - this.defense;
@@ -42,13 +42,13 @@ class Personnage {
         }
         return degatSubi;
     }
-
-    verifRageGuerrier(){
-        if(this.rage != null){
-            this.rage += 20;
-            if(this.rage >= this.rageMax){
-                this.rage = this.rageMax;
-            }
-        }
-    }
+    // déplacer vers guerrier.js
+    // verifRageGuerrier(){
+    //     if(this.rage != null){
+    //         this.rage += 20;
+    //         if(this.rage >= this.rageMax){
+    //             this.rage = this.rageMax;
+    //         }
+    //     }
+    // }
 }
