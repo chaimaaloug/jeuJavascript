@@ -48,6 +48,7 @@ body {
 }
 
 #btnBouleDeFeu {display: none;}
+#btnRage {display: none;}
 
 #infoJoueur, #infoMonstre, #infoShop {
     position: static;
